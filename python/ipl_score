@@ -1,0 +1,59 @@
+def calculate_points_table(matches):
+    teams = ["CSK", "DC", "KKR", "MI", "PK", "RR", "RCB", "SH"]
+    points = {team: 0 for team in teams}
+    
+    # Update points based on match outcomes
+    for match in matches:
+        team1, team2, winner = match
+        points[winner] += 1
+    
+    # Sort teams by points in descending order and then alphabetically
+    sorted_teams = sorted(points.items(), key=lambda x: (-x[1], x[0]))
+    
+    return sorted_teams
+
+def main():
+    # Input matches
+    matches = [
+        ('CSK', 'DC', 'DC'),
+        ('CSK', 'KKR', 'CSK'),
+        ('CSK', 'MI', 'MI'),
+        ('CSK', 'PK', 'CSK'),
+        ('CSK', 'RR', 'RR'),
+        ('CSK', 'RCB', 'RCB'),
+        ('CSK', 'SH', 'SH'),
+        ('DC', 'KKR', 'DC'),
+        ('DC', 'MI', 'MI'),
+        ('DC', 'PK', 'DC'),
+        ('DC', 'RR', 'RR'),
+        ('DC', 'RCB', 'DC'),
+        ('DC', 'SH', 'DC'),
+        ('KKR', 'MI', 'KKR'),
+        ('KKR', 'PK', 'KKR'),
+        ('KKR', 'RR', 'RR'),
+        ('KKR', 'RCB', 'RCB'),
+        ('KKR', 'SH', 'SH'),
+        ('MI', 'PK', 'MI'),
+        ('MI', 'RR', 'MI'),
+        ('MI', 'RCB', 'MI'),
+        ('MI', 'SH', 'MI'),
+        ('PK', 'RR', 'RR'),
+        ('PK', 'RCB', 'RCB'),
+        ('PK', 'SH', 'SH'),
+        ('RR', 'RCB', 'RCB'),
+        ('RR', 'SH', 'RR'),
+        ('RCB', 'SH', 'RCB')
+    ]
+    
+    # Calculate points table
+    points_table = calculate_points_table(matches)
+    
+    # Display points table
+    print("IPL Points Table:")
+    print("Team\t\tPoints")
+    print("--------------------")
+    for team, points in points_table:
+        print(f"{team}\t\t{points}")
+
+if __name__ == "__main__":
+    main()
